@@ -1,7 +1,9 @@
 import React,{Fragment,useState} from "react";
 import '../index.css';
+import { v4 as uuidv4 } from 'uuid';
 
-const Formulario=()=>{
+
+const Formulario=({crearCita})=>{
 
     //crear state de Citas
     const [cita,actualizarCita]=useState({
@@ -23,25 +25,25 @@ const Formulario=()=>{
         //extraer los valores
             const {mascota,propietario,fecha,hora,sintomas}=cita;//es recomendable escribirlo asi para no tener que escribir cita.mascota.... {value={}nos permite recetear el formulario }
         //cuando el usuario preciona el boton agregar cita
-            const submitCita=e=>{
-                e.preventDefault()
+    const submitCita=e=>{
+        e.preventDefault()
 
                 
-                //validar
-                if(mascota.trim() === '' || propietario.trim() === '' || fecha.trim() === ''
+         //validar
+            if(mascota.trim() === '' || propietario.trim() === '' || fecha.trim() === ''
                 || hora.trim() === '' || sintomas.trim() === '' ){
-                    actualizarError(true) //encaso de que falle o llenen los campos pasa hacer true
-                    return;
+                actualizarError(true) //encaso de que falle o llenen los campos pasa hacer true
+                 return;
                 }
+        //elimar mensaje previo  
+                actualizarError(false);
+         //asignar id
+                cita.id=uuidv4();
+                       
+         //crear la cita
+                crearCita(cita)
 
-               
-
-                //asignar id
-
-                //crear la cita
-
-
-                //reiniciar form
+            //reiniciar form
             }
         
     return(
