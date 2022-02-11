@@ -1,6 +1,7 @@
 import React,{Fragment,useState} from "react";
 import '../index.css';
 import { v4 as uuidv4 } from 'uuid';
+import  PropTypes  from "prop-types";
 
 
 const Formulario=({crearCita})=>{
@@ -44,6 +45,13 @@ const Formulario=({crearCita})=>{
                 crearCita(cita)
 
             //reiniciar form
+            actualizarCita({ //una ves que se agreaga la cita al scrip pricipal se actualiza todo
+                mascota:'',
+                propietario:'',
+                fecha:'',
+                hora:'',
+                sintomas:''
+            })
             }
         
     return(
@@ -110,5 +118,9 @@ const Formulario=({crearCita})=>{
         </Fragment>
     )
 }
+Formulario.propTypes={
+    crearCita:PropTypes.func.isRequired
+  }
+  
 
 export default Formulario;

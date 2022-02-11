@@ -76,9 +76,10 @@ input[type="time"]{
 
 .button.eliminar,
 .button.eliminar:hover{
-  background-color: #c10059;
+  background-color: #33c4f07c;
   color: white;
   margin: 2rem;
+  width: 90%;
 }
 
 .alerta-error{
